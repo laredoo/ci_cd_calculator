@@ -2,7 +2,12 @@ name: Github Actions Software Engineer Example
 on: [push]
 jobs:
   build: 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
